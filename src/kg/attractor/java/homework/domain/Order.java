@@ -58,10 +58,10 @@ public class Order {
     public void calculateTotal() {
         total = items.stream().mapToDouble(e -> e.getPrice()).sum();
     }
-    public String printItems()
-    {
-        var strItems=items.stream().map(e->"name:"+e.getName()+",price:"+e.getPrice()+" ,type:"+e.getType()+" amount:"+e.getAmount()).
-                collect(Collectors.joining(",","[","]"));
+
+    public String printItems() {
+        var strItems = items.stream().map(e -> "name:" + e.getName() + ",price:" + e.getPrice() + " ,type:" + e.getType() + " amount:" + e.getAmount()).
+                collect(Collectors.joining(",", "[", "]"));
         return strItems;
     }
 
