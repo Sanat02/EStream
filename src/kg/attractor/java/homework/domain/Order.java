@@ -2,6 +2,7 @@ package kg.attractor.java.homework.domain;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import kg.attractor.java.homework.util.NotImplementedException;
 
@@ -53,7 +54,24 @@ public class Order {
     //------   Реализация ваших методов должна быть ниже этой линии   ------
     //----------------------------------------------------------------------
 
+
     public void calculateTotal() {
-        throw new NotImplementedException("Вам надо реализовать этот метод!");
+        total = items.stream().mapToDouble(e -> e.getPrice()).sum();
+    }
+    public String printItems()
+    {
+        var strItems=items.stream().map(e->"name:"+e.getName()+",price:"+e.getPrice()+" ,type:"+e.getType()+" amount:"+e.getAmount()).
+                collect(Collectors.joining(",","[","]"));
+        return strItems;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "customer=" + customer +
+                ", items=" + items +
+                ", homeDelivery=" + homeDelivery +
+                ", total=" + total +
+                '}';
     }
 }
